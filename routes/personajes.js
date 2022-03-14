@@ -48,7 +48,7 @@ router.post('/crearCharacter', (req, res)=>{
         historia: req.body.historia,
         peliculas: req.body.peliculas
     }).then(personaje => {
-        res.send('Un personaje ha sido creado')
+        res.redirect('http://localhost:4000/disney/characters/')
     })
 })
 

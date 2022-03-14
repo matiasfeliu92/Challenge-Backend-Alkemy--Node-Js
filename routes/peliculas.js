@@ -6,7 +6,7 @@ const {Pelicula} = require('../database/db')
 router.get('/', (req, res)=>{
     Pelicula.findAll()
         .then(pelicula=>{
-            res.json(pelicula)
+            res.render('peliculas', {pelicula: pelicula})
         })
 })
 

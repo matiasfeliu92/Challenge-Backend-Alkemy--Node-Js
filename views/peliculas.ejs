@@ -44,11 +44,12 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <a href="http://localhost:4000/disney/characters/crearCharacter">Crear nuevo personaje</a>
-            <% personajes.forEach(personaje => { %>
+            <a href="#">Crear nueva pelicula</a>
+            <% pelicula.forEach(pelic => { %>
              <div class="col-md-4">
-                 <img class="img-fluid" src=<%= personaje.imagen %> alt="">
-                 <h2><%= personaje.nombre %></h2>
+                 <img class="img-fluid" src=<%= pelic.imagen %> alt="">
+                 <h2><%= pelic.titulo %></h2>
+                 <p><%= pelic.fechaDeCreacion %></p>
                  <a href="#">Actualizar</a>
                  <a href="#">Eliminar</a> 
              </div>
