@@ -3,16 +3,36 @@ const router = express.Router()
 //const control = require('../controllers/control')
 const {Personaje} = require('../database/db')
 
-router.get('/listaCharacters', (req, res)=>{
-    Personaje.findAll()
+// busca solamente el nombre y la imagen de cada personaje
+router.get('/', (req, res)=>{
+    Personaje.findAll({attributes: ['imagen', 'nombre']})
         .then(personajes=>{
-            res.json(personajes)
+            res.render('personajes', {personajes: personajes})
         })
 })
 
-router.get('/listaCharacters/:id', (req, res)=>{
+// busca solamente el personaje por ID
+router.get('/:id', (req, res)=>{
     const id = req.params.id
     Personaje.findOne({where:{id: id}})
+        .then(personaje=>{
+            res.json(personaje)
+        })
+})
+
+// busca solamente el personaje por NOMBRE
+router.get('/:nombre', (req, res)=>{
+    const nombre = req.params.nombre
+    Personaje.findOne({where:{nombre: nombre}})
+        .then(personaje=>{
+            res.json(personaje)
+        })
+})
+
+// busca solamente el personaje por EDAD
+router.get('/:edad', (req, res)=>{
+    const edad = req.params.edad
+    Personaje.findOne({where:{edad: edad}})
         .then(personaje=>{
             res.json(personaje)
         })
