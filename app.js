@@ -17,6 +17,10 @@ app.use('/disney/characters', require('./routes/personajes'))
 app.use('/disney/movies', require('./routes/peliculas'))
 app.use('/disney/auth', require('./routes/auth'))
 
+app.get('/disney', (req, res)=>{
+    res.render('index')
+})
+
 app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}/disney/characters`)
+    console.log(`http://localhost:${PORT}/disney`)
 })

@@ -10,6 +10,10 @@ router.get('/', (req, res)=>{
         })
 })
 
+router.get('/newMovie', (req, res)=>{
+    return res.render('formPeliculas')
+})
+
 // busca solamente los titulos de las peliculas
 router.get('/:titulo', (req, res)=>{
     Pelicula.findAll({attributes: ['titulo']})

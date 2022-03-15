@@ -2,6 +2,18 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('json-web-token')
 
+router.get('/', (req, res)=>{
+    return res.render('usuarios')
+})
+
+router.get('/signUp', (req, res)=>{
+    return res.render('usuariosSignUp')
+})
+
+router.get('/signIn', (req, res)=>{
+    return res.render('usuariosSignIn')
+})
+
 router.post('/register', (req, res)=>{
     const id = req.body.id
     const email = req.body.email
