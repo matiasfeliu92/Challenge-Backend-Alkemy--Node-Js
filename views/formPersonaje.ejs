@@ -13,22 +13,23 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('templates/nav.ejs') %> 
     <div class="container">
-      <h1><%= h1Index %></h1>
-      <a href="/canciones">Lista de Canciones</a>
-      <form action="/guardar" method="post">
+      <h1>ingresa tu personaje favorito</h1>
+      <a href="http://localhost:4000/disney/characters/">Personajes</a>
+      <form action="http://localhost:4000/disney/characters/createCharacter" method="post">
         <input
           type="text"
-          placeholder="Ingrese el titulo la cancion"
-          name="titulo"
+          placeholder="Ingrese el nombre del personaje"
+          name="nombre"
         />
-        <input type="text" placeholder="Ingrese el autor" name="autor" />
-        <input type="text" placeholder="Ingrese el album" name="album" />
+        <input type="text" placeholder="Ingrese la imagen del personaje" name="imagen" />
+        <!-- <input type="text" placeholder="Ingrese el album" name="album" />
         <input type="text" placeholder="Ingrese la duracion" name="duracion" />
         <input type="text" placeholder="Ingrese el genero" name="genero" />
         <input type="url" placeholder="Ingrese una imagen de la cancion/album" name="imagen">
-        <input type="url" placeholder="Ingrese el link de YouTube" name="linkyoutube">
-        <button type="submit">Agregar Cancion</button>
+        <input type="url" placeholder="Ingrese el link de YouTube" name="linkyoutube"> -->
+        <button type="submit">Agregar Personaje</button>
       </form>
     </div>
     <script

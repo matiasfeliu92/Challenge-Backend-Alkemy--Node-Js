@@ -3,12 +3,16 @@ const router = express.Router()
 //const control = require('../controllers/control')
 const {Personaje} = require('../database/db')
 
-// busca solamente el nombre y la imagen de cada personaje
+// ruta que muestra la pagina de personajes
 router.get('/', (req, res)=>{
     Personaje.findAll({attributes: ['imagen', 'nombre']})
         .then(personajes=>{
             res.render('personajes', {personajes: personajes})
         })
+})
+
+router.get('/newChar', (req, res)=>{
+    return res.render('formPersonaje')
 })
 
 // busca solamente el personaje por ID
@@ -38,7 +42,7 @@ router.get('/:edad', (req, res)=>{
         })
 })
 
-router.post('/crearCharacter', (req, res)=>{
+router.post('/createCharacter', (req, res)=>{
     const persona = req.body
     Personaje.create({
         imagen: req.body.imagen,
