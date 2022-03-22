@@ -4,7 +4,8 @@ module.exports = (sequelize, type) => {
             type: type.STRING(1000) 
         },
         nombre: {
-            type: type.STRING
+            type: type.STRING,
+            allowNull: false
         },
         edad: {
             type: type.INTEGER

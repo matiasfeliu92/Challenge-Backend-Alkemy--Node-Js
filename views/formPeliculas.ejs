@@ -2,20 +2,29 @@
 <html lang="en">
   <head>
     <%- include('templates/head.ejs') %>
-    <title>Document</title>
+    <title>Crear Pelicula</title>
   </head>
   <body>
     <%- include('templates/nav.ejs') %> 
     <div class="container">
       <h1>ingresa tu pelicula favorita</h1>
       <a href="http://localhost:4000/disney/movies/">Peliculas</a>
-      <form action="http://localhost:4000/disney/characters/createMovie" method="post">
+      <form action="http://localhost:4000/disney/movies/createMovie" method="post">
+        <input
+          type="text"
+          placeholder="Ingrese una imagen de la pelicula"
+          name="imagen"
+        />
         <input
           type="text"
           placeholder="Ingrese el titulo de la pelicula"
           name="titulo"
         />
-        <input type="text" placeholder="Ingrese la imagen del personaje" name="imagen" />
+        <input
+          type="text"
+          placeholder="Ingrese la fecha de creacion de la pelicula"
+          name="fechaDeCreacion"
+        />
         <!-- <input type="text" placeholder="Ingrese el album" name="album" />
         <input type="text" placeholder="Ingrese la duracion" name="duracion" />
         <input type="text" placeholder="Ingrese el genero" name="genero" />

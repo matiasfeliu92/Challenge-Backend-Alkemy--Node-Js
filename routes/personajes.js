@@ -7,7 +7,8 @@ const {Personaje} = require('../database/db')
 router.get('/', (req, res)=>{
     Personaje.findAll({attributes: ['imagen', 'nombre']})
         .then(personajes=>{
-            res.render('personajes', {personajes: personajes})
+            //res.render('personajes', {personajes: personajes})
+            res.json(personajes)
         })
 })
 
@@ -52,7 +53,8 @@ router.post('/createCharacter', (req, res)=>{
         historia: req.body.historia,
         peliculas: req.body.peliculas
     }).then(personaje => {
-        res.redirect('http://localhost:4000/disney/characters/')
+        //res.redirect('http://localhost:4000/disney/characters/')
+        res.json(personaje)
     })
 })
 

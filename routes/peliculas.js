@@ -6,7 +6,8 @@ const {Pelicula} = require('../database/db')
 router.get('/', (req, res)=>{
     Pelicula.findAll()
         .then(pelicula=>{
-            res.render('peliculas', {pelicula: pelicula})
+            //res.render('peliculas', {pelicula: pelicula})
+            res.json(pelicula)
         })
 })
 
@@ -28,6 +29,17 @@ router.get('/', (req, res)=>{
         .then(pelicula=>{
             res.json(pelicula)
         })
+})
+
+router.post('/createMovie', (req, res)=>{
+    Pelicula.create({
+        imagen: req.body.imagen,
+        titulo: req.body.titulo,
+        fechaDeCreacion: req.body.fechaDeCreacion,
+    }).then(pelicula => {
+        //res.redirect('http://localhost:4000/disney/movies/')
+        res.json(pelicula)
+    })
 })
 
 module.exports = router

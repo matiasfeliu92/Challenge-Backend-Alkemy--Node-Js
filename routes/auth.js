@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const jwt = require('json-web-token')
+require('dotenv').config()
+const jwt = require('jsonwebtoken')
 
 router.get('/', (req, res)=>{
     return res.render('usuarios')
@@ -15,14 +16,15 @@ router.get('/signIn', (req, res)=>{
 })
 
 router.post('/register', (req, res)=>{
-    const id = req.body.id
+    //const id = req.body.id
     const email = req.body.email
     const password = req.body.password
-    jwt.sign(id, 'secret_key', (err, token)=>{
+    const privateKey = process.env.PRIVATEKEY
+    const token = jwt.sign(email, password, privateKey, (err, result)=>{
         if(err){
             res.status(400).send({msg: 'Error, registro incorrecto'})
         }else{
-            res.send({msg: 'Register success', token: token})
+            res.send({msg: 'Register success', token: result})
         }
     })
 })
