@@ -58,7 +58,7 @@ router.post('/createCharacter', (req, res)=>{
     })
 })
 
-router.put('/actualizarCharacter/:id', (req, res)=>{
+router.put('/updateCharacter/:id', (req, res)=>{
     const id = req.params.id
     const nuevosDatos = req.body
     Personaje.findOne({where:{id: id}}) 
@@ -66,6 +66,17 @@ router.put('/actualizarCharacter/:id', (req, res)=>{
             personaje.update(nuevosDatos)
                 .then(nuevaPersona=>{
                     res.json(nuevaPersona)
+                })
+        })
+})
+
+router.delete('/deleteCharacter/:id', (req, res)=>{
+    const id = req.params.id
+    Personaje.findOne({where:{id: id}}) 
+        .then(personaje=>{
+            personaje.destroy()
+                .then(personaje=>{
+                    res.json(personaje)
                 })
         })
 })
