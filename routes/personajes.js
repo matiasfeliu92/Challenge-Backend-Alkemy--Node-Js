@@ -65,7 +65,12 @@ router.put('/updateCharacter/:id', (req, res)=>{
         .then(personaje=>{
             personaje.update(nuevosDatos)
                 .then(nuevaPersona=>{
-                    res.json(nuevaPersona)
+                    if(nuevaPersona){
+                        res.status(200).json({message: `El personaje con id ${id} ha sido actualizado`})
+                    } else{
+                        res.status(400).json({message: `El personaje no se pudo actualizar`})
+                    }
+                    
                 })
         })
 })
@@ -76,7 +81,11 @@ router.delete('/deleteCharacter/:id', (req, res)=>{
         .then(personaje=>{
             personaje.destroy()
                 .then(personaje=>{
-                    res.json(personaje)
+                    if(personaje){
+                        res.status(200).json({message: `El personaje con id ${id} ha sido eliminado`})
+                    } else{
+                        res.status(400).json({message: `El personaje no se pudo eliminar`})
+                    }
                 })
         })
 })
