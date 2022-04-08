@@ -5,16 +5,20 @@ const {Personaje} = require('../database/db')
 
 // ruta que muestra la pagina de personajes
 router.get('/', (req, res)=>{
-    Personaje.findAll({attributes: ['imagen', 'nombre']})
+    Personaje.findAll({attributes: ['imagen', 'nombre', 'historia']})
         .then(personajes=>{
             //res.render('personajes', {personajes: personajes})
             res.json(personajes)
         })
 })
 
-router.get('/newChar', (req, res)=>{
-    return res.render('formPersonaje')
-})
+// router.get('/newChar', (req, res)=>{
+//     return res.render('formPersonaje')
+// })
+
+// router.get('/updateChar', (req, res)=>{
+//     return res.render('formActualizarPersonaje')
+// })
 
 // busca solamente el personaje por ID
 router.get('/:id', (req, res)=>{
@@ -65,12 +69,7 @@ router.put('/updateCharacter/:id', (req, res)=>{
         .then(personaje=>{
             personaje.update(nuevosDatos)
                 .then(nuevaPersona=>{
-                    if(nuevaPersona){
-                        res.status(200).json({message: `El personaje con id ${id} ha sido actualizado`})
-                    } else{
-                        res.status(400).json({message: `El personaje no se pudo actualizar`})
-                    }
-                    
+                    res.json(nuevaPersona)
                 })
         })
 })
@@ -81,11 +80,7 @@ router.delete('/deleteCharacter/:id', (req, res)=>{
         .then(personaje=>{
             personaje.destroy()
                 .then(personaje=>{
-                    if(personaje){
-                        res.status(200).json({message: `El personaje con id ${id} ha sido eliminado`})
-                    } else{
-                        res.status(400).json({message: `El personaje no se pudo eliminar`})
-                    }
+                    res.json(personaje)
                 })
         })
 })

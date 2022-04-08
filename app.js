@@ -14,7 +14,6 @@ app.use(express.json())
 app.use(express.static(__dirname + '/views'))
 
 app.use('/disney/characters', require('./routes/personajes'))
-app.use('/disney/movies', require('./routes/peliculas'))
 app.use('/disney/auth', require('./routes/auth'))
 
 app.get('/disney', (req, res)=>{

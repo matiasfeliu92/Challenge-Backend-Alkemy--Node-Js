@@ -1,2 +1,39 @@
+### ENDPOINTS PERSONAJES
+
 ### ENDPOINT QUE BUSCA TODOS LOS PERSONAJES
-GET http://localhost:4000/disney/characters/listaCharacters HTTP/1.1
+GET http://localhost:4000/disney/characters HTTP/1.1
+
+### ENDPOINT QUE BUSCA UN PERSONAJE POR EL ID
+GET http://localhost:4000/disney/characters/1 HTTP/1.1
+
+### ENDPOINT QUE BUSCA UN PERSONAJE POR EL NOMBRE
+GET http://localhost:4000/disney/characters/LaSirenita HTTP/1.1
+
+### ENDPOINT QUE CREA UN PERSONAJE
+POST http://localhost:4000/disney/characters/createCharacter HTTP/1.1
+Content-Type: application/json
+ 
+{
+    "nombre": "",
+    "imagen": "",
+    "edad": ,
+    "peso": ,
+    "historia": "",
+    "peliculas": ""
+}
+
+### ENDPOINT QUE ACTUALIZA UN PERSONAJE
+PUT http://localhost:4000/disney/characters/updateCharacter/10 HTTP/1.1
+Content-Type: application/json
+ 
+{
+    "nombre": "dgdgfd",
+    "imagen": "www.mercadolibre.com",
+    "edad": 46,
+    "peso": 78,
+    "historia": "fdsvdsvdv",
+    "peliculas": "dfdsds"
+}
+
+### ENDPOINT QUE ELIMINA UN PERSONAJE
+DELETE http://localhost:4000/disney/characters/deleteCharacter/1 HTTP/1.1
