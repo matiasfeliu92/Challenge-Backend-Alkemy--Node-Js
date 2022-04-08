@@ -4,7 +4,7 @@
 GET http://localhost:4000/disney/characters HTTP/1.1
 
 ### ENDPOINT QUE BUSCA UN PERSONAJE POR EL ID
-GET http://localhost:4000/disney/characters/1 HTTP/1.1
+GET http://localhost:4000/disney/characters/10 HTTP/1.1
 
 ### ENDPOINT QUE BUSCA UN PERSONAJE POR EL NOMBRE
 GET http://localhost:4000/disney/characters/LaSirenita HTTP/1.1
@@ -14,12 +14,12 @@ POST http://localhost:4000/disney/characters/createCharacter HTTP/1.1
 Content-Type: application/json
  
 {
-    "nombre": "",
-    "imagen": "",
-    "edad": ,
-    "peso": ,
-    "historia": "",
-    "peliculas": ""
+    "nombre": "gdffdfd",
+    "imagen": "www.claro.com.ar",
+    "edad": 67,
+    "peso": 89,
+    "historia": "c bc vc",
+    "peliculas": "vcxvcvc"
 }
 
 ### ENDPOINT QUE ACTUALIZA UN PERSONAJE
@@ -36,4 +36,4 @@ Content-Type: application/json
 }
 
 ### ENDPOINT QUE ELIMINA UN PERSONAJE
-DELETE http://localhost:4000/disney/characters/deleteCharacter/1 HTTP/1.1
+DELETE http://localhost:4000/disney/characters/deleteCharacter/10 HTTP/1.1
