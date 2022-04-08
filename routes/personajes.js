@@ -7,8 +7,8 @@ const {Personaje} = require('../database/db')
 router.get('/', (req, res)=>{
     Personaje.findAll({attributes: ['imagen', 'nombre']})
         .then(personajes=>{
-            //res.render('personajes', {personajes: personajes})
-            res.json(personajes)
+            res.render('personajes', {personajes: personajes})
+            //res.json(personajes)
         })
 })
 
