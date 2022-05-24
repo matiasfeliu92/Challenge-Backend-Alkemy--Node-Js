@@ -1,34 +1,34 @@
 const {Personaje} = require('../database/db')
 const control = {}
 
-control.mostrarPers = (req, res)=>{
-    Personaje.findAll({attributes: ['imagen', 'nombre', 'historia']})
-        .then(personajes=>{
-            res.json(personajes)
-        })
+control.mostrarPers = async (req, res)=>{
+    const personajes = await Personaje.findAll({attributes: ['id', 'imagen', 'nombre', 'historia']})
+    if(personajes){
+        // console.log(personajes)
+        res.json(personajes)
+    } else {
+        res.json(403).json('no existen personajes')
+    }
 }
 
-control.mostrarPersID = (req, res)=>{
+control.mostrarPersID = async (req, res)=>{
     const id = req.params.id
-    Personaje.findOne({where:{id: id}})
-        .then(personaje=>{
-            res.json(personaje)
-        })
+    const personaje = await Personaje.findOne({where:{id: id}})
+    if(personaje){
+        res.json(personaje)
+        console.log(personaje)
+    } else {
+        res.status(403).json({message: 'no existe el personaje buscado'})
+    }
 }
 
-control.crearPers = (req, res)=>{
-    const persona = req.body
-    Personaje.create({
-        imagen: req.body.imagen,
-        nombre: req.body.nombre,
-        edad: req.body.edad,
-        peso: req.body.peso,
-        historia: req.body.historia,
-        peliculas: req.body.peliculas
-    })
-    .then((personaje) => {
-        res.json(personaje)
-    })
+control.crearPers = async (req, res)=>{
+    try {
+        const personaje = await Personaje.create(req.body)
+        res.status(200).json(personaje)
+    } catch (error) {
+        res.status(403).json(error.parent.sqlMessage)
+    }
 }
 
 control.actualizarPers = (req, res)=>{
