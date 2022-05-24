@@ -4,7 +4,7 @@ const control = {}
 control.mostrarPers = async (req, res)=>{
     const personajes = await Personaje.findAll({attributes: ['id', 'imagen', 'nombre', 'historia']})
     if(personajes){
-        // console.log(personajes)
+        //console.log(personajes.dataValues)
         res.json(personajes)
     } else {
         res.json(403).json('no existen personajes')
@@ -16,7 +16,7 @@ control.mostrarPersID = async (req, res)=>{
     const personaje = await Personaje.findOne({where:{id: id}})
     if(personaje){
         res.json(personaje)
-        console.log(personaje)
+        //console.log(personaje.dataValues)
     } else {
         res.status(403).json({message: 'no existe el personaje buscado'})
     }
