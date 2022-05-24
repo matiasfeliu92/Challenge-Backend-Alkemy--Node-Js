@@ -23,3 +23,5 @@ app.get('/disney', (req, res)=>{
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}/disney`)
 })
+
+module.exports = app
